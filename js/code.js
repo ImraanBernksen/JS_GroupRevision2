@@ -88,3 +88,23 @@
 //     let results = await FetchData();
 //     console.log(result);
 // }
+
+fetch('https://api.chucknorris.io/jokes/random')
+.then((res)=>{
+    return res.json();
+})
+.then((data)=>{
+    let tbody = document.querySelector('tbody');
+    Object.keys(data).forEach( (item)=>{
+        if(data[item].length){
+            console.log(`${item}: ${data[item]}`);
+            tbody.innerHTML +=
+            `
+                <tr>
+                    <td>${item}</td>
+                    <td>${data[item]}</td>
+                </tr>
+            `
+        }
+    } )
+})
